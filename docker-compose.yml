@@ -1,0 +1,70 @@
+version: "3.2"
+
+services:
+  papercups:
+    container_name: "banking_chatbot_backend"
+    image: papercups/papercups:latest
+    ports:
+      - "3000:3000"
+      - "4000:4000"
+    command: sh -c "sleep 10 && /entrypoint.sh db createdb && /entrypoint.sh db migrate && echo 'running' && /entrypoint.sh run"
+    depends_on:
+      - db
+    environment:
+      DATABASE_URL: "ecto://postgres:postgres@db/postgres"
+      # PUT YOUR OWN SECRET KEYBASE HERE (MUST BE AT LEAST 64 BYTES)
+      SECRET_KEY_BASE: "afd644dc4c94fcd09b87e8213d49a6b3d26cf29f1ac155dd5e3611f7baeda73a6694ba5d4c2e209b277f1a65dcb0a1d798951b41e3a552ce66e88b8f8e444107"
+      BACKEND_URL: "localhost"
+      MIX_ENV: "prod"
+      REQUIRE_DB_SSL: "false"
+      REACT_APP_FILE_UPLOADS_ENABLED: 1
+      # Replace with your domain name
+      REACT_APP_URL: "app.papercups.io"
+  db:
+    container_name: "banking_chatbot_backend_database"
+    image: postgres:alpine
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_PASSWORD: postgres
+  chatbot:
+    container_name: "banking_chatbot_chatbot"
+    user: root
+    build: 
+      context: chatbot
+    volumes:
+    - "./:/app"
+    ports: 
+      - "5005:5005"
+    depends_on:
+      - chatbot_actions
+  chatbot_actions:
+    container_name: "banking_chatbot_chatbot_actions"
+    build: 
+      context: chatbot/actions
+    volumes:
+      - ./actions:/app/actions
+    ports:
+      - 5055:5055
+  webhook:
+    container_name: "banking_chatbot_backend_webhook"
+    build:
+      context: webhook
+    ports:
+      - 9001:9001
+    environment:
+      PAPERCUPS_API_KEY: ""
+  frontend:
+    container_name: "banking_chatbot_frontend"
+    build:
+      context: frontend
+    command: npm start
+    volumes: 
+        - .:/app/
+        - /app/node_modules
+    ports:
+        - 8000:3000
+    depends_on:
+      - papercups
+      - chatbot
+  

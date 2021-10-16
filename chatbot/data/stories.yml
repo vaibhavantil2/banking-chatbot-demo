@@ -1,0 +1,28 @@
+version: "2.0"
+
+stories:
+  - story: get_account_balance
+    steps:
+    - action: action_get_countries
+    - intent: select_country
+    - action: action_select_country
+    - action: action_get_available_banks
+    - intent: select_bank
+    - action: action_select_bank
+    - intent: get_accounts
+    - action: action_get_accounts
+    - intent: get_account_balance
+    - action: action_get_account_balance
+
+  - story: get_account_transactions
+    steps:
+    - action: action_get_countries
+    - intent: select_country
+    - action: action_select_country
+    - action: action_get_available_banks
+    - intent: select_bank
+    - action: action_select_bank
+    - intent: get_accounts
+    - action: action_get_accounts
+    - intent: get_account_transactions
+    - action: action_get_account_transactions

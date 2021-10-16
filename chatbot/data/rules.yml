@@ -1,0 +1,60 @@
+version: "2.0"
+
+rules:
+  - rule: fallback
+    steps:
+      - intent: nlu_fallback
+      - action: utter_default
+  - rule: greet
+    steps:
+      - intent: greet
+      - action: utter_greet
+  - rule: thankyou
+    steps:
+      - intent: thankyou
+      - action: utter_youarewelcome
+  - rule: goodbye
+    steps:
+      - intent: goodbye
+      - action: utter_goodbye
+  - rule: challenge
+    steps:
+      - intent: bot_challenge
+      - action: utter_iamabot
+  - rule: which_information
+    steps:
+      - intent: which_information
+      - action: utter_which_information
+  - rule: how_to_get_started
+    steps:
+      - intent: how_to_get_started
+      - action: utter_get_started
+  - rule: get_countries
+    steps:
+      - intent: get_countries
+      - action: action_get_countries
+  - rule: select_country
+    steps:
+      - intent: select_country
+      - action: action_select_country
+      - action: action_get_available_banks
+  - rule: get_available_banks
+    steps:
+      - intent: get_available_banks
+      - action: action_get_available_banks
+  - rule: select_bank
+    steps:
+      - intent: select_bank
+      - action: action_select_bank
+  - rule: get_accounts
+    steps:
+      - intent: get_accounts
+      - action: action_get_accounts
+  - rule: get_account_balance
+    steps:
+      - intent: get_account_balance
+      - action: action_get_account_balance
+  - rule: get_account_transactions
+    steps:
+      - intent: get_account_transactions
+      - action: action_get_account_transactions

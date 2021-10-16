@@ -1,0 +1,66 @@
+version: "2.0"
+
+intents:
+  - greet
+  - goodbye
+  - affirm
+  - deny
+  - bot_challenge
+  - thankyou
+  - get_account_info
+  - how_to_get_started
+  - which_information
+  - get_countries
+  - select_country
+  - get_available_banks
+  - select_bank
+  - get_accounts
+  - get_account_balance
+  - get_account_transactions
+
+entities:
+  - name
+
+slots:
+  country:
+    type: any
+    influence_conversation: false
+  bank:
+    type: any
+    influence_conversation: false
+  accounts:
+    type: any
+    influence_conversation: false
+
+responses:
+  utter_greet:
+  - text: "Hey! How are you?"
+  utter_happy:
+  - text: "Great, carry on!"
+  utter_goodbye:
+  - text: "Bye"
+  utter_default:
+    - text: "Sorry, I didn't get that, can you rephrase?"
+  utter_youarewelcome:
+    - text: "You're very welcome."
+  utter_iamabot:
+    - text: "I am a bot, powered by Rasa."
+  utter_get_started:
+    - text: "I can help you find concerts and venues. Do you like music?"
+  utter_awesome:
+    - text: "Awesome! You can ask me things like \"What is my account balance?\""
+  utter_which_information:
+    - text: "You can check your account balances and see transactions for your accounts."
+
+actions:
+  - action_get_countries
+  - action_select_country
+  - action_get_available_banks
+  - action_select_bank
+  - action_get_accounts
+  - action_get_account_balance
+  - action_get_account_transactions
+
+session_config:
+  session_expiration_time: 60
+  carry_over_slots_to_new_session: true
