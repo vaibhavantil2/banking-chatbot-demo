@@ -13,7 +13,7 @@ services:
     environment:
       DATABASE_URL: "ecto://postgres:postgres@db/postgres"
       # PUT YOUR OWN SECRET KEYBASE HERE (MUST BE AT LEAST 64 BYTES)
-      SECRET_KEY_BASE: "afd644dc4c94fcd09b87e8213d49a6b3d26cf29f1ac155dd5e3611f7baeda73a6694ba5d4c2e209b277f1a65dcb0a1d798951b41e3a552ce66e88b8f8e444107"
+      SECRET_KEY_BASE: "ABCD"
       BACKEND_URL: "localhost"
       MIX_ENV: "prod"
       REQUIRE_DB_SSL: "false"
@@ -31,9 +31,7 @@ services:
     container_name: "banking_chatbot_chatbot"
     user: root
     build: 
-      context: chatbot
-    volumes:
-    - "./:/app"
+      context: ./chatbot
     ports: 
       - "5005:5005"
     depends_on:
@@ -41,29 +39,27 @@ services:
   chatbot_actions:
     container_name: "banking_chatbot_chatbot_actions"
     build: 
-      context: chatbot/actions
+      context: ./chatbot/actions
+  lambda:
+    container_name: "banking_chatbot_lambda"
+    image: lambci/lambda:build-nodejs12.x
+    entrypoint: ["/var/rapid/init", "--bootstrap", "/var/runtime/bootstrap", "--enable-msg-logs", "handler.handler"]
     volumes:
-      - ./actions:/app/actions
-    ports:
-      - 5055:5055
-  webhook:
-    container_name: "banking_chatbot_backend_webhook"
-    build:
-      context: webhook
+      - ./webhook:/var/task:ro,delegated
     ports:
       - 9001:9001
     environment:
-      PAPERCUPS_API_KEY: ""
+      PAPERCUPS_API_KEY: "ABCD"
+      AWS_LAMBDA_FUNCTION_NAME: "webhook"
+      DOCKER_LAMBDA_STAY_OPEN: 1
   frontend:
     container_name: "banking_chatbot_frontend"
     build:
-      context: frontend
+      context: ./frontend
     command: npm start
-    volumes: 
-        - .:/app/
-        - /app/node_modules
+    stdin_open: true
     ports:
-        - 8000:3000
+        - 8000:8000
     depends_on:
       - papercups
       - chatbot

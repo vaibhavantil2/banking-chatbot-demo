@@ -1,22 +1,11 @@
-FROM bitnami/python:latest as base
+FROM bitnami/python:3.7
 
-SHELL ["/bin/bash", "-o", "pipefail", "-c"]
-
-USER root
-
-RUN curl -sSL https://raw.githubusercontent.com/python-poetry/poetry/master/get-poetry.py | python
-ENV PATH "/root/.poetry/bin:${PATH}"
-
-# install dependencies
 COPY . /app/
 
 WORKDIR /app
 
-# update permissions & change user
-RUN chgrp -R 0 /app && chmod -R g=u /app
+ENV PYTHONPATH=${PYTHONPATH}:${PWD}
 
-USER 1001
+RUN pip3 install rasa==2.8.7
 
-EXPOSE 5005
-
-CMD ["poetry", "run", "rasa", "run"]
+CMD rasa run

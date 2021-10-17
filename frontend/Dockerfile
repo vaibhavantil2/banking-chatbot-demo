@@ -1,9 +1,9 @@
-FROM node:12
+FROM bitnami/node
 
-WORKDIR /app/
+COPY . /app/
 
-COPY package.json .
+WORKDIR /app
 
 RUN npm install
 
-COPY . .
+CMD npm start

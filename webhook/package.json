@@ -4,7 +4,7 @@
   "description": "papercups webhook for communication with  rasa chatbot",
   "main": "handler.js",
   "scripts": {
-    "deploy": "docker run --rm -e PAPERCUPS_API_KEY=abcd -e AWS_LAMBDA_FUNCTION_NAME=webhook -e DOCKER_LAMBDA_STAY_OPEN=1 -p 9001:9001 -v $PWD:/var/task:ro,delegated lambci/lambda:nodejs12.x handler.handler"
+    "deploy": "docker run --rm -e PAPERCUPS_API_KEY=ABCD -e AWS_LAMBDA_FUNCTION_NAME=webhook -e DOCKER_LAMBDA_STAY_OPEN=1 -p 9001:9001 -v $PWD:/var/task:ro,delegated lambci/lambda:nodejs12.x handler.handler"
   },
   "author": "",
   "license": "Apache-2.0",
