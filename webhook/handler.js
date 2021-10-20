@@ -1,7 +1,7 @@
 // See https://github.com/papercups-io/papercups-node#usage
 const papercups = require('@papercups-io/papercups')(
     process.env.PAPERCUPS_API_KEY,
-    { host: 'http://localhost:4000' }
+    { host: 'http://banking_chatbot_backend:4000' }
 );
 
 const http = require('http');
@@ -19,7 +19,7 @@ exports.handler = async function ({ event, payload }) {
             })
 
             const options = {
-                hostname: 'localhost',
+                hostname: 'banking_chatbot_chatbot',
                 port: 5005,
                 path: '/webhooks/rest/webhook',
                 method: 'POST',

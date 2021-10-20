@@ -5,11 +5,11 @@ import Body from './Body';
 import Footer from './Footer';
 
 // NB: during development, replace this with a valid account ID from your dev db
-const TEST_ACCOUNT_ID = 'f64a9092-e540-4cd6-b3b3-ae367ae0bfbf';
+const TEST_ACCOUNT_ID = '1f733797-7213-417c-a747-9cb4ca2b085e';
 
 const config = {
-  title: 'Welcome to Papercups!',
-  subtitle: 'Ask us anything in the chat window 😊',
+  title: 'Welcome!',
+  subtitle: 'This is a simple banking chatbot demo 🥳',
   accountId: TEST_ACCOUNT_ID,
   greeting: 'Hi there! How can I help you?',
   customer: {

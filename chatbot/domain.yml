@@ -15,6 +15,7 @@ intents:
   - get_available_banks
   - select_bank
   - get_accounts
+  - select_account
   - get_account_balance
   - get_account_transactions
 

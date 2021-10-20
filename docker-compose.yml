@@ -11,9 +11,9 @@ services:
     depends_on:
       - db
     environment:
-      DATABASE_URL: "ecto://postgres:postgres@db/postgres"
+      DATABASE_URL: "ecto://postgres:postgres@banking_chatbot_backend_database/postgres"
       # PUT YOUR OWN SECRET KEYBASE HERE (MUST BE AT LEAST 64 BYTES)
-      SECRET_KEY_BASE: "ABCD"
+      SECRET_KEY_BASE: "afd644dc4c94fcd09b87e8213d49a6b3d26cf29f1ac155dd5e3611f7baeda73a6694ba5d4c2e209b277f1a65dcb0a1d798951b41e3a552ce66e88b8f8e444107"
       BACKEND_URL: "localhost"
       MIX_ENV: "prod"
       REQUIRE_DB_SSL: "false"
@@ -40,6 +40,8 @@ services:
     container_name: "banking_chatbot_chatbot_actions"
     build: 
       context: ./chatbot/actions
+    ports: 
+      - "5055:5055"
   lambda:
     container_name: "banking_chatbot_lambda"
     image: lambci/lambda:build-nodejs12.x
@@ -49,7 +51,7 @@ services:
     ports:
       - 9001:9001
     environment:
-      PAPERCUPS_API_KEY: "ABCD"
+      PAPERCUPS_API_KEY: "SFMyNTY.g2gDbAAAAAJoAmQAB3VzZXJfaWRhAWgCZAAKYWNjb3VudF9pZG0AAAAkMWY3MzM3OTctNzIxMy00MTdjLWE3NDctOWNiNGNhMmIwODVlam4GALS-P558AWIAAVGA.1Yvkm4_f--y0-NsFAF_JTVm3Zv18M0H2D0N4ooYSJdU"
       AWS_LAMBDA_FUNCTION_NAME: "webhook"
       DOCKER_LAMBDA_STAY_OPEN: 1
   frontend:
@@ -59,8 +61,4 @@ services:
     command: npm start
     stdin_open: true
     ports:
-        - 8000:8000
-    depends_on:
-      - papercups
-      - chatbot
-  
+      - 7000:7000

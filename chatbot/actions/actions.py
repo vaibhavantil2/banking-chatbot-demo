@@ -18,7 +18,7 @@ import re
 
 
 
-API_TOKEN = ""
+API_TOKEN = "NORDIGEN_API_TOKEN"
 CHAT_WEBSITE_URL = "https://localhost:4000"
 countries = [
             {"code": "AT", "name": "AUSTRIA"},
