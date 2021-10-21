@@ -1,15 +1,7 @@
-This example was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-It is linked to the @papercups-io/chat-builder package in the parent directory for development purposes.
 
-### Usage
+Copy the account token from the [Papercups account overview](http://localhost:4000/settings/account)
 
-```bash
-# in parent/root (/) directory
-npm install  # install deps for @papercups-io/chat-builder
-# in example/current directory
-npm install  # install @papercups-io/chat-builder and its dependencies from the parent
-npm start    # serves the example app on :3000
-```
+http://localhost:4000/settings/account
 
-Updates to functionality in the parent dir will be reflected in the example app.
+and set the copied text as new value for the constant TEST_ACCOUNT_ID in App.tsx. 

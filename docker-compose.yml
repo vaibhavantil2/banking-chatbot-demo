@@ -51,14 +51,20 @@ services:
     ports:
       - 9001:9001
     environment:
-      PAPERCUPS_API_KEY: "SFMyNTY.g2gDbAAAAAJoAmQAB3VzZXJfaWRhAWgCZAAKYWNjb3VudF9pZG0AAAAkMWY3MzM3OTctNzIxMy00MTdjLWE3NDctOWNiNGNhMmIwODVlam4GALS-P558AWIAAVGA.1Yvkm4_f--y0-NsFAF_JTVm3Zv18M0H2D0N4ooYSJdU"
       AWS_LAMBDA_FUNCTION_NAME: "webhook"
       DOCKER_LAMBDA_STAY_OPEN: 1
+      DOCKER_LAMBDA_WATCH: 1
   frontend:
     container_name: "banking_chatbot_frontend"
-    build:
-      context: ./frontend
+    image: node:12-slim
+    volumes:
+      - ./frontend:/app/
+      - nodemodules:/app/node_modules
+    working_dir: /app
     command: npm start
     stdin_open: true
     ports:
       - 7000:7000
+
+volumes:
+    nodemodules: {}

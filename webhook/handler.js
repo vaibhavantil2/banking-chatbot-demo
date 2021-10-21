@@ -1,6 +1,6 @@
 // See https://github.com/papercups-io/papercups-node#usage
 const papercups = require('@papercups-io/papercups')(
-    process.env.PAPERCUPS_API_KEY,
+    'SFMyNTY.g2gDbAAAAAJoAmQAB3VzZXJfaWRhAWgCZAAKYWNjb3VudF9pZG0AAAAkYWRiM2FlNGItNTc2MC00NDRmLWJkMTUtZjBhMGRlOGFlOTIzam4GACeMSqJ8AWIAAVGA.nJtBQlGzJgviEge7PPLFBAEGxYMIWmgTtqpW_ffBPlE',
     { host: 'http://banking_chatbot_backend:4000' }
 );
 

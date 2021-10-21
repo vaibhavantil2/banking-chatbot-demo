@@ -4,7 +4,7 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "npx react-scripts start",
+    "start": "npm install && npx react-scripts start",
     "build": "npx react-scripts build",
     "test": "npx react-scripts test",
     "eject": "npx react-scripts eject"
