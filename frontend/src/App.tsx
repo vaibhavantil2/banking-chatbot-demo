@@ -5,7 +5,7 @@ import Body from './Body';
 import Footer from './Footer';
 
 // NB: during development, replace this with a valid account ID from your dev db
-const TEST_ACCOUNT_ID = 'd1026042-fafc-4027-9bab-3584e05a26fb';
+const TEST_ACCOUNT_ID = '5fa73316-04d2-48ae-bd3e-77599814e3de';
 
 const config = {
   title: 'Welcome!',

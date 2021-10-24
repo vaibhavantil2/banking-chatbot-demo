@@ -277,3 +277,11 @@ nlu:
     - How much did I spend last month?
     - what places have I spent money?
     - where did I spend the most money last month?
+
+- intent: out_of_scope
+  examples: |
+    - I'd like to speak to a real person
+    - What else do I need to know
+    - I'm on the fence
+    - I don't know, if I really need this
+    - But why

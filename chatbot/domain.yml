@@ -61,6 +61,7 @@ actions:
   - action_get_accounts
   - action_get_account_balance
   - action_get_account_transactions
+  - action_handoff
 
 session_config:
   session_expiration_time: 60

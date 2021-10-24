@@ -258,3 +258,14 @@ class ActionGetAccountTransactions(Action):
 
         return []
 
+
+class ActionHandoff(Action):
+    def name(self):
+        return "action_handoff"
+
+    def run(self, dispatcher, tracker, domain):
+
+        dispatcher.utter_message(text="I've assigned the conversation to one of our customer service specialists. This might take a minute or two.")
+        dispatcher.utter_message(text="CUSTOMER_SERVICE_HANDOFF")
+
+        return []
