@@ -50,6 +50,3 @@ update Papercups API key in package.json
     "user_id": null
   }
 }' http://localhost:9001/2015-03-31/functions/webhook/invocations```
-
-
-

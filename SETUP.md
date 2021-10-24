@@ -25,6 +25,8 @@ rasa + rasa actions server   (chatbot)
 - **banking_chatbot_chatbot**
 - **banking_chatbot_chatbot_actions**
 
+-> create a free account at [Nordigen](https://nordigen.com/en/) and update the API key in `./chatbot/actions/actions.py` (API_TOKEN)<br>
+
 <br><br><br>
 
 frontend (papercups chat widget)
